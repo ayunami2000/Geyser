@@ -129,7 +129,7 @@ public final class LocalSession extends TcpSession {
                     }
                     ctx.channel().writeAndFlush(new HAProxyMessage(
                             HAProxyProtocolVersion.V2, HAProxyCommand.PROXY, proxiedProtocol,
-                            clientAddress.getAddress().getHostAddress(), remoteAddress.getAddress().getHostAddress(),
+                            clientAddress.getAddress().getHostAddress(), clientAddress.getAddress() instanceof Inet4Address ? "127.0.0.1" : "::1",
                             clientAddress.getPort(), remoteAddress.getPort()
                     ));
                     ctx.pipeline().remove(this);

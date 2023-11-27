@@ -103,9 +103,9 @@ public class GeyserLegacyPingPassthrough implements IGeyserPingPassthrough, Runn
                     dataOutputStream.writeByte(socket.getLocalAddress() instanceof Inet4Address ?
                             HAProxyProxiedProtocol.TCP4.byteValue() : HAProxyProxiedProtocol.TCP6.byteValue());
                     byte[] srcAddrBytes = NetUtil.createByteArrayFromIpAddressString(
-                            ((InetSocketAddress) socket.getLocalSocketAddress()).getAddress().getHostAddress());
+                            socket.getLocalAddress().getHostAddress());
                     byte[] dstAddrBytes = NetUtil.createByteArrayFromIpAddressString(
-                            endpoint.getAddress().getHostAddress());
+                            socket.getLocalAddress() instanceof Inet4Address ? "127.0.0.1" : "::1");
                     dataOutputStream.writeShort(srcAddrBytes.length + dstAddrBytes.length + 4);
                     dataOutputStream.write(srcAddrBytes);
                     dataOutputStream.write(dstAddrBytes);

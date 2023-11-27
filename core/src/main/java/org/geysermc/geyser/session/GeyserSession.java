@@ -59,7 +59,6 @@ import com.github.steveice10.packetlib.event.session.PacketErrorEvent;
 import com.github.steveice10.packetlib.event.session.PacketSendingEvent;
 import com.github.steveice10.packetlib.event.session.SessionAdapter;
 import com.github.steveice10.packetlib.packet.Packet;
-import com.github.steveice10.packetlib.tcp.TcpClientSession;
 import com.github.steveice10.packetlib.tcp.TcpSession;
 import io.netty.channel.Channel;
 import io.netty.channel.EventLoop;
